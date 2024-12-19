@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Akshay Patidar</title>
+    <style>
+        body {
+            background-color: #f1efdc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #014797;
+        }
+
+        #logs-container {
+            text-align: center;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io("ws://localhost:3000");
+    socket.on('live-log-update', function (data) {
+        console.log(data);
+        for (elem of data) document.getElementById('logs-container').innerHTML += '<p>' + elem + '</br><p>';
+    });
+    socket.on('initial-log', function (data) {
+        console.log(data);
+        for (elem of data) document.getElementById('logs-container').innerHTML += '<p>' + elem + '</br><p>';
+    })
+</script>
+
+<body>
+    <h1>LOG MONITORING APP</h1>
+    <div id="logs-container"></div>
+</body>
+
+</html>
