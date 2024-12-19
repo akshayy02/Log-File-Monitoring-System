@@ -5,7 +5,7 @@ const io = require('socket.io')(http);
 const path = require('path');
 const Watcher = require('./monitor');
 
-const PORT = 3000;
+const PORT = 3000 || 4000;
 
 app.use(express.static(__dirname));
 
